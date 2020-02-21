@@ -39,27 +39,29 @@ func CalculatePosition(plateauSize string, initialPosition string, movements str
 	return formatPosition(currentPosition)
 }
 
+var errRoverOutOfThePlateau = fmt.Errorf("Can't move. Rover would go out of the plateau")
+
 // moveRover Assumes the rover should not try to go out of the plateau. Otherwise it'd die.
 func moveRover(currentPosition *coordinates, facing CardinalPoint, plateauSize *coordinates) error {
 	switch facing {
 	case north:
 		if currentPosition.y+1 > plateauSize.y {
-			return fmt.Errorf("Can't move. Rover would go out of the plateau")
+			return errRoverOutOfThePlateau
 		}
 		currentPosition.y++
 	case east:
 		if currentPosition.x+1 > plateauSize.x {
-			return fmt.Errorf("Can't move. Rover would go out of the plateau")
+			return errRoverOutOfThePlateau
 		}
 		currentPosition.x++
 	case south:
 		if currentPosition.y-1 < 0 {
-			return fmt.Errorf("Can't move. Rover would go out of the plateau")
+			return errRoverOutOfThePlateau
 		}
 		currentPosition.y--
 	case west:
 		if currentPosition.x-1 < 0 {
-			return fmt.Errorf("Can't move. Rover would go out of the plateau")
+			return errRoverOutOfThePlateau
 		}
 		currentPosition.x--
 	}
