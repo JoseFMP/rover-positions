@@ -18,6 +18,7 @@ type roverPosition struct {
 	facing   CardinalPoint
 }
 
+// movement Represents a movement instruction from nasa. Either move, or turn left/right
 type movement byte
 
 const (
@@ -25,9 +26,10 @@ const (
 	turnLeft  = movement(byte('L'))
 	turnRight = movement(byte('R'))
 )
+
 var possibleMovements = map[movement]struct{}{move: {}, turnLeft: {}, turnRight: {}}
 
-
+// coordinates Is just a generic two-point coordinate, used for the location of the rover but also to represent the plateau size, i.e. x=width, y=height
 type coordinates struct {
 	x uint64
 	y uint64

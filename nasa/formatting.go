@@ -60,7 +60,7 @@ func parseMovements(movementsAsString string) (*[]movement, error) {
 		candidateMovement := movement(byte(movementRune))
 		_, movementCharValid := possibleMovements[candidateMovement]
 		if !movementCharValid {
-			return nil, fmt.Errorf("Movement string seems malformed. What is \"\" supposed to mean?", movementCharValid)
+			return nil, fmt.Errorf("Movement string seems malformed. What is \"\" supposed to mean? ", movementCharValid)
 		}
 		movements = append(movements, candidateMovement)
 	}

@@ -66,6 +66,7 @@ func moveRover(currentPosition *coordinates, facing CardinalPoint, plateauSize *
 	return nil
 }
 
+// rightTurns shortcut to map the current facing to the facing after turning right
 var rightTurns = map[CardinalPoint]CardinalPoint{
 	north: east,
 	east:  south,
@@ -73,6 +74,7 @@ var rightTurns = map[CardinalPoint]CardinalPoint{
 	west:  north,
 }
 
+// leftTurns shortcut to map the current facing to the facing after turning left
 var leftTurns = map[CardinalPoint]CardinalPoint{
 	north: west,
 	east:  north,
